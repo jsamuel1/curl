@@ -12,11 +12,25 @@ parts:
           source: .
           prime:
                  - -usr/include
+          configflags:
+                 - --with-ssl
+                 - --with-brotli
+                 - --with-libssh2
+          stage-packages:
+                  - libcurl4-openssl-dev
+                  - libbrotli-dev
+                  - libssh2-1-dev
+                  - libgpg-error-dev
+                  - libgpg-error0
+                  - libgcrypt20-dev
+                  - libgcrypt20
+                  - libc6
+                  - libc6-dev
 apps:
   curl:
     command: bin/curl
-    aliases: 
-        - curl
     plugs:
         - network-bind
         - home
+  curl-config:
+    command: bin/curl-config
